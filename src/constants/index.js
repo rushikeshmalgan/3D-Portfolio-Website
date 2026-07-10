@@ -8,137 +8,67 @@ import {
   html,
   css,
   reactjs,
-  redux,
-  tailwind,
   nodejs,
   mongodb,
   git,
-  figma,
   docker,
   meta,
-  shopify,
   carrent,
   jobit,
   tripguide,
   threejs,
 } from "../assets";
 
+// ─── Navigation ────────────────────────────────────────────────────────────────
 export const navLinks = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
+  { id: "about",    title: "About"      },
+  { id: "services", title: "What I Do"  },
+  { id: "work",     title: "Experience" },
+  { id: "projects", title: "Projects"   },
+  { id: "contact",  title: "Contact"    },
 ];
 
+// ─── Services (About cards) ────────────────────────────────────────────────────
 const services = [
-  {
-    title: "MERN Stack Developer",
-    icon: web,
-  },
-  {
-    title: "AI Project Enthusiast",
-    icon: backend,
-  },
-  {
-    title: "Creative Video Editor",
-    icon: creator,
-  },
-  {
-    title: "Open Source Contributor",
-    icon: mobile,
-  },
+  { title: "Full Stack Developer",    icon: web      },
+  { title: "Backend Engineer",        icon: backend  },
+  { title: "React Native / Mobile",   icon: mobile   },
+  { title: "AI Integration Expert",   icon: creator  },
 ];
 
+// ─── Technologies (Tech Ball section) ─────────────────────────────────────────
+// Uses existing assets where available; text-only entries for extras
 const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
+  { name: "HTML 5",        icon: html        },
+  { name: "CSS 3",         icon: css         },
+  { name: "JavaScript",    icon: javascript  },
+  { name: "TypeScript",    icon: typescript  },
+  { name: "React.js",      icon: reactjs     },
+  { name: "Node.js",       icon: nodejs      },
+  { name: "MongoDB",       icon: mongodb     },
+  { name: "Three JS",      icon: threejs     },
+  { name: "Git / GitHub",  icon: git         },
+  { name: "Docker",        icon: docker      },
 ];
 
+// ─── Experience (Vertical Timeline) ───────────────────────────────────────────
 const experiences = [
   {
-    title: "Web Development Intern",
-    company_name: "Vision 2024 Exhibition",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Dec 2023 - Jan 2024",
+    title: "Freelance Full Stack Developer — MERN & Mobile",
+    company_name: "Remote",
+    icon: meta,           // reusing available asset
+    iconBg: "#1F6363",
+    date: "Apr 2025 – Present",
     points: [
-      "Built Java apps using JDBC for managing backend data and showcased at Vision 2024.",
-      "Worked on responsive UI and improved user experience for demo apps.",
-      "Explained the project to diverse audiences, improving public speaking and product pitching skills.",
-    ],
-  },
-  {
-    title: "Cloud Computing Student",
-    company_name: "NPTEL Certification",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Aug 2023 - Nov 2023",
-    points: [
-      "Completed a certified course in Cloud Computing by NPTEL.",
-      "Learned the basics of cloud architecture, deployment models, and IaaS/PaaS.",
-      "Worked on cloud-based mini-projects using deployment tools and platforms.",
+      "Delivered 5+ full-stack applications end-to-end for clients spanning health-tech, fashion-AI, and interior design verticals.",
+      "Architected scalable backend systems using Node.js, Express.js, JWT authentication, bcrypt hashing, and role-based access control (RBAC).",
+      "Built and shipped React Native / Expo mobile apps with real-time AI integrations (Google Gemini, Replicate API).",
+      "Maintained 100% on-time delivery rate, >99% uptime across all deployed applications on Vercel and cloud platforms.",
     ],
   },
 ];
 
+// ─── Testimonials ──────────────────────────────────────────────────────────────
 const testimonials = [
   {
     testimonial:
@@ -150,7 +80,7 @@ const testimonials = [
   },
   {
     testimonial:
-      "His enthusiasm for learning and building cool stuff with MERN is infectious. Definitely someone to watch out for.",
+      "His enthusiasm for building with MERN and AI is infectious. Definitely someone to watch out for.",
     name: "Senior Peer",
     designation: "Mentor",
     company: "Tech Club",
@@ -158,7 +88,7 @@ const testimonials = [
   },
   {
     testimonial:
-      "He's the kind of guy who doesn't just dream of making amazing projects – he actually builds them.",
+      "He doesn't just dream of amazing projects — he actually ships them, on time, production-ready.",
     name: "Hackathon Teammate",
     designation: "Fellow Coder",
     company: "DevHack 2024",
@@ -166,70 +96,89 @@ const testimonials = [
   },
 ];
 
+// ─── Projects ─────────────────────────────────────────────────────────────────
 const projects = [
   {
-    name: "College Finder",
+    name: "Sattava — AI-Powered Health & Nutrition Tracker",
     description:
-      "A smart web app that helps students find colleges based on MHT CET and JEE percentile. Built with Node.js, MongoDB, and React.",
+      "Full-stack health-tech platform for 100+ active users. Integrates Gemini Vision, FatSecret API, and Generative AI for real-time food scanning and nutrition tracking. 15+ REST endpoints handling 10K+ daily requests at 99.2% uptime. Cut API response time from 4.2 s → 1.1 s via Redis caching.",
     tags: [
-      {
-        name: "nodejs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: jobit,
-    source_code_link: "https://github.com/your-username/college-finder",
-  },
-  {
-    name: "Symphoria - Spotify Clone",
-    description:
-      "A luxurious music platform that redefines the music experience with unique UI, animations, and new-age features built on MERN.",
-    tags: [
-      {
-        name: "mern",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "green-text-gradient",
-      },
-      {
-        name: "animations",
-        color: "pink-text-gradient",
-      },
+      { name: "React Native", color: "blue-text-gradient"  },
+      { name: "Node.js",      color: "green-text-gradient" },
+      { name: "Firebase",     color: "gold-text-gradient"  },
+      { name: "Google AI",    color: "pink-text-gradient"  },
     ],
     image: carrent,
-    source_code_link: "https://github.com/your-username/symphoria",
+    source_code_link: null,   // set to your repo URL once public
+    live_link: null,
   },
   {
-    name: "Smart Women Safety App",
+    name: "Virtual Fashion Stylist",
     description:
-      "Real-time AI-powered app focused on women's safety, with location tracking, emergency alerts, and voice assistance.",
+      "AI-powered virtual try-on product overlaying outfits in real time using Computer Vision. Won 1st place among 25 teams at Vision 2024 Exhibition. Built with React Native, Java (Spring Boot), and Python CV pipeline.",
     tags: [
-      {
-        name: "mern",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "AI",
-        color: "green-text-gradient",
-      },
-      {
-        name: "real-time",
-        color: "pink-text-gradient",
-      },
+      { name: "Computer Vision", color: "blue-text-gradient"  },
+      { name: "React Native",    color: "green-text-gradient" },
+      { name: "Spring Boot",     color: "gold-text-gradient"  },
+      { name: "Python",          color: "pink-text-gradient"  },
+    ],
+    image: jobit,
+    source_code_link: null,
+    in_development: true,
+  },
+  {
+    name: "DECO AI Room Designer",
+    description:
+      "3-stage image pipeline transforming room photos into 5+ themed design variations using the Replicate API. 6+ REST endpoints with async job tracking, file uploads up to 50 MB. Built with React.js, Node.js, Express.js, and MongoDB.",
+    tags: [
+      { name: "React.js",     color: "blue-text-gradient"  },
+      { name: "Node.js",      color: "green-text-gradient" },
+      { name: "MongoDB",      color: "gold-text-gradient"  },
+      { name: "Replicate AI", color: "pink-text-gradient"  },
     ],
     image: tripguide,
-    source_code_link: "https://github.com/your-username/women-safety-app",
+    source_code_link: null,
+    live_link: null,
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+// ─── Achievements / Leadership ─────────────────────────────────────────────────
+const achievements = [
+  {
+    title: "GDG — Content & Media Head",
+    subtitle: "Google Developer Groups · 2025–2026",
+    icon: "🌐",
+    color: "#2F9C95",
+  },
+  {
+    title: "E-Cell — Media Co-Head",
+    subtitle: "Entrepreneurship Cell · 2026–Present",
+    icon: "🚀",
+    color: "#D9CB92",
+  },
+  {
+    title: "Vision 2024 — 1st Place",
+    subtitle: "Winner among 25 teams · Exhibition",
+    icon: "🏆",
+    color: "#D9CB92",
+  },
+  {
+    title: "Rajya Puraskar",
+    subtitle: "State Award · Bharat Scouts & Guides",
+    icon: "🎖️",
+    color: "#2F9C95",
+  },
+];
+
+// ─── Education ─────────────────────────────────────────────────────────────────
+const education = [
+  {
+    degree: "Bachelor of Engineering — Computer Engineering",
+    institution: "University of Mumbai",
+    date: "Aug 2023 – Present",
+    cgpa: "7.54 / 10",
+    icon: "🎓",
+  },
+];
+
+export { services, technologies, experiences, testimonials, projects, achievements, education };

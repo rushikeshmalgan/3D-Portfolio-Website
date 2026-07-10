@@ -1,5 +1,5 @@
 import React from "react";
-import { Tilt } from 'react-tilt'; // ✅ CORRECT way
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -8,26 +8,24 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className="xs:w-[250px] w-full">
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      className="w-full p-[1px] rounded-[20px] shadow-card"
+      style={{
+        background: "linear-gradient(90.13deg, var(--color-gold) 1.9%, var(--color-teal) 97.5%)",
+      }}
     >
       <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        options={{ max: 45, scale: 1, speed: 450 }}
+        className="rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
+        style={{ background: "var(--bg-card)" }}
       >
-        <img
-          src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
-        />
-
-        <h3 className='text-white text-[20px] font-bold text-center'>
+        <img src={icon} alt={title} className="w-16 h-16 object-contain" />
+        <h3
+          className="text-[20px] font-bold text-center"
+          style={{ color: "var(--text-primary)" }}
+        >
           {title}
         </h3>
       </div>
@@ -39,20 +37,34 @@ const About = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p
+          className={styles.sectionSubText}
+          style={{ color: "var(--accent-secondary)" }}
+        >
+          What I Do
+        </p>
+        <h2
+          className={styles.sectionHeadText}
+          style={{ color: "var(--text-primary)" }}
+        >
+          Services & Expertise.
+        </h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className="mt-4 text-[17px] max-w-3xl leading-[30px]"
+        style={{ color: "var(--text-muted)" }}
       >
-        I'm a passionate software developer and a 2nd-year B.E. student based in India, driven by a love for building real-world solutions through code. I specialize in JavaScript, Java, and the MERN stack, and have experience with modern tools like Node.js and React. My projects reflect my creativity and problem-solving approach — from an AI-powered women safety app to a premium Spotify clone (Symphoria), and a drag-and-drop resume builder.
-
-I believe in learning by doing, and I’m constantly pushing my boundaries by participating in hackathons, side hustles, and collaborative projects. I’m also skilled in video editing and UI/UX design, aiming to deliver not just functional but visually striking user experiences.
+        I'm a Full Stack & Backend Engineer specialising in the MERN stack,
+        React Native, and AI integration. I build production-grade mobile and
+        web apps end-to-end — from scalable Node.js APIs and Firebase backends
+        to polished React UIs with smooth animations and real-world performance.
+        I also led the development of Sattava, a health-tech platform serving
+        100+ active users.
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
@@ -61,4 +73,4 @@ I believe in learning by doing, and I’m constantly pushing my boundaries by pa
   );
 };
 
-export default SectionWrapper(About, "about");
+export default SectionWrapper(About, "services");
