@@ -3,9 +3,16 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
+import { profile } from "../constants";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+
+// EmailJS values come from env vars (see .env.example). Vite only exposes
+// variables prefixed with VITE_, and the IDs themselves are never used as names.
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const Contact = () => {
   const formRef = useRef();
@@ -29,20 +36,26 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      alert(`The contact form isn't set up yet. Please email me at ${profile.email}.`);
+      return;
+    }
+
     setLoading(true);
 
     emailjs
       .send(
-        import.meta.env.service_9lechlf,
-        import.meta.env.template_rln1o2s,
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: "Rushikesh Malgan",
+          to_name: profile.name,
           from_email: form.email,
-          to_email: "malganrushikesh02@gmail.com",
+          to_email: profile.email,
           message: form.message,
         },
-        import.meta.env["VITE_XOJJWGJ_80EJIDNLM"]
+        EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
@@ -88,6 +101,8 @@ const Contact = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
+              required
+              autoComplete="name"
               placeholder="What's your good name?"
               className="py-4 px-6 rounded-lg outline-none border font-medium"
               style={{
@@ -104,7 +119,9 @@ const Contact = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="malganrushikesh02@gmail.com"
+              required
+              autoComplete="email"
+              placeholder="you@example.com"
               className="py-4 px-6 rounded-lg outline-none border font-medium"
               style={{
                 background: "var(--bg-secondary)",
@@ -120,6 +137,7 @@ const Contact = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
+              required
               placeholder="What you want to say?"
               className="py-4 px-6 rounded-lg outline-none border font-medium"
               style={{

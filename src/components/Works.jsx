@@ -3,18 +3,41 @@ import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
+// Up to two initials for the generated cover, e.g. "Morya Bappa Mode" -> "MB".
+const initialsOf = (name) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join("");
+
+const ProjectLink = ({ href, label, name }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${label} for ${name} (opens in a new tab)`}
+    className="text-[13px] font-semibold underline-offset-4 hover:underline"
+    style={{ color: "var(--accent-secondary)" }}
+  >
+    {label} ↗
+  </a>
+);
+
 const ProjectCard = ({
   index,
   name,
-  description,
+  pitch,
+  highlights,
   tags,
   image,
   source_code_link,
+  live_link,
   in_development,
 }) => {
   return (
@@ -38,45 +61,32 @@ const ProjectCard = ({
           </div>
         )}
 
-        {/* Project image */}
-        <div className="relative w-full h-[230px]">
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover rounded-2xl"
-          />
-
-          {/* GitHub / source link — hidden if no link */}
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            {source_code_link ? (
-              <div
-                onClick={() => window.open(source_code_link, "_blank")}
-                className="w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-                style={{ background: "rgba(5,8,22,0.8)" }}
-              >
-                <img
-                  src={github}
-                  alt="source code"
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </div>
-            ) : (
-              <div
-                className="w-10 h-10 rounded-full flex justify-center items-center"
-                title="Repository not public yet"
-                style={{
-                  background: "rgba(5,8,22,0.6)",
-                  border: "1px solid rgba(217,203,146,0.3)",
-                  cursor: "default",
-                }}
-              >
-                <span className="text-[12px]" style={{ color: "var(--accent-primary)" }}>
-                  🔒
-                </span>
-              </div>
-            )}
+        {/* Project image, or a generated cover until a screenshot is added */}
+        {image ? (
+          <div className="relative w-full h-[230px]">
+            <img
+              src={image}
+              alt={`${name} screenshot`}
+              loading="lazy"
+              className="w-full h-full object-cover rounded-2xl"
+            />
           </div>
-        </div>
+        ) : (
+          <div
+            aria-hidden="true"
+            className="w-full h-[150px] rounded-2xl flex items-center justify-center"
+            style={{
+              background: "linear-gradient(135deg, #1F6363 0%, #151030 100%)",
+            }}
+          >
+            <span
+              className="font-black text-[56px] tracking-wider select-none"
+              style={{ color: "var(--color-gold)", opacity: 0.85 }}
+            >
+              {initialsOf(name)}
+            </span>
+          </div>
+        )}
 
         {/* Card body */}
         <div className="mt-5">
@@ -88,23 +98,47 @@ const ProjectCard = ({
           </h3>
           <p
             className="mt-2 text-[14px] leading-[22px]"
-            style={{ color: "var(--text-muted)" }}
+            style={{ color: "var(--text-primary)" }}
           >
-            {description}
+            {pitch}
           </p>
+          {highlights.length > 0 && (
+            <ul
+              className="mt-3 list-disc ml-4 space-y-1.5 text-[13px] leading-[20px]"
+              style={{ color: "var(--text-muted)" }}
+            >
+              {highlights.map((point) => (
+                <li key={`${name}-${point}`}>{point}</li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/* Tags */}
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[13px] font-medium ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
-        </div>
+        {tags.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <p
+                key={`${name}-${tag.name}`}
+                className={`text-[13px] font-medium ${tag.color}`}
+              >
+                #{tag.name}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {/* Links: only rendered when a URL exists */}
+        {(source_code_link || live_link) && (
+          <div className="mt-4 flex gap-5">
+            {source_code_link && (
+              <ProjectLink href={source_code_link} label="GitHub" name={name} />
+            )}
+            {live_link && (
+              <ProjectLink href={live_link} label="Live demo" name={name} />
+            )}
+          </div>
+        )}
       </Tilt>
     </motion.div>
   );
@@ -134,19 +168,21 @@ const Works = () => {
           className="mt-3 text-[17px] max-w-3xl leading-[30px]"
           style={{ color: "var(--text-muted)" }}
         >
-          Production-grade apps that solve real problems — from AI-powered food
-          tracking to virtual fashion try-ons. Each project ships with scalable
-          backends, clean architecture, and measurable impact.
+          Seven projects, from an AI code-review GitHub App and a terminal
+          coding assistant to a food-logging app and a Ganesh Chaturthi
+          exploration game.
         </motion.p>
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7" id="projects">
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <ProjectCard key={project.name} index={index} {...project} />
         ))}
       </div>
     </>
   );
 };
 
-export default SectionWrapper(Works, "");
+// Seven stacked cards make this section ~4,500px tall on a phone, so 25% of it
+// never fits in the viewport. Reveal it once 5% is visible instead.
+export default SectionWrapper(Works, "", 0.05);

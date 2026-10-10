@@ -20,15 +20,16 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import java from "./tech/java.svg";
+import nextjs from "./tech/nextjs.svg";
+import postgresql from "./tech/postgresql.svg";
+import firebase from "./tech/firebase.svg";
+import claude from "./tech/claude.svg";
+import gemini from "./tech/gemini.svg";
 
-import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
 
 export {
   logo,
@@ -52,11 +53,13 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
+  java,
+  nextjs,
+  postgresql,
+  firebase,
+  claude,
+  gemini,
   shopify,
   starbucks,
   tesla,
-  carrent,
-  jobit,
-  tripguide,
 };

@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
-import { fadeIn, textVariant } from "../utils/motion";
+import { profile } from "../constants";
+import { textVariant } from "../utils/motion";
 
 const slideFromLeft = {
   hidden: { opacity: 0, x: -60 },
@@ -64,7 +65,9 @@ const AboutMe = () => {
             />
             <img
               src="/pp.png"
-              alt="Rushikesh Malgan — Full Stack Developer"
+              alt="Portrait of Rushikesh Malgan"
+              width={220}
+              height={220}
               className="photo-glow relative z-10"
               style={{
                 width: "220px",
@@ -80,21 +83,21 @@ const AboutMe = () => {
           <div className="flex gap-4 mt-2">
             {[
               {
-                href: "mailto:malganrushikesh02@gmail.com",
+                href: `mailto:${profile.email}`,
                 icon: "fas fa-envelope",
                 title: "Email",
                 borderColor: "var(--accent-primary)",
                 color: "var(--accent-primary)",
               },
               {
-                href: "https://github.com/rushikeshmalgan",
+                href: profile.github,
                 icon: "fab fa-github",
                 title: "GitHub",
                 borderColor: "var(--accent-secondary)",
                 color: "var(--accent-secondary)",
               },
               {
-                href: "https://www.linkedin.com/in/rushikesh-malgan-010756319/",
+                href: profile.linkedin,
                 icon: "fab fa-linkedin-in",
                 title: "LinkedIn",
                 borderColor: "var(--color-teal)",
@@ -107,6 +110,7 @@ const AboutMe = () => {
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 title={title}
+                aria-label={title}
                 className="flex items-center justify-center w-10 h-10 rounded-full transition-transform hover:scale-110"
                 style={{
                   background: "var(--bg-card)",
@@ -114,7 +118,7 @@ const AboutMe = () => {
                   color,
                 }}
               >
-                <i className={`${icon} text-sm`} />
+                <i className={`${icon} text-sm`} aria-hidden="true" />
               </a>
             ))}
           </div>
@@ -127,14 +131,13 @@ const AboutMe = () => {
               className="text-[28px] font-bold leading-tight"
               style={{ color: "var(--text-primary)" }}
             >
-              Rushikesh Malgan
+              {profile.name}
             </h3>
             <p
               className="text-[15px] font-medium mt-1"
               style={{ color: "var(--accent-secondary)" }}
             >
-              Full Stack Developer &nbsp;|&nbsp; Backend Engineer &nbsp;|&nbsp;
-              React Native &nbsp;|&nbsp; Node.js &nbsp;|&nbsp; AI Integration
+              Freelance Full-Stack Developer &nbsp;|&nbsp; LLM-powered products
             </p>
           </div>
 
@@ -142,27 +145,31 @@ const AboutMe = () => {
             className="text-[16px] leading-[30px] mt-2"
             style={{ color: "var(--text-muted)" }}
           >
-            Full Stack and Backend Engineer (Computer Engineering, University of
-            Mumbai) with hands-on experience building production-grade mobile and
-            web apps. Led development of{" "}
+            Final-year Computer Engineering student at ViMEET (University of
+            Mumbai, batch of 2027), based in Pune. I freelance as a full-stack
+            developer and build products on top of LLM APIs, like{" "}
             <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
-              Sattava
+              Codentry
             </span>
-            , a health-tech platform integrating 5+ AI APIs for real-time food
-            scanning and nutrition tracking. Shipped{" "}
+            , an AI code-review GitHub App,{" "}
             <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
-              5+ full-stack apps
-            </span>{" "}
-            with 100+ active users.
+              Unpack
+            </span>
+            , which turns Instagram reels into verified resources, and{" "}
+            <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
+              BroCode
+            </span>
+            , a terminal coding assistant. I'm open to SDE, Full Stack and AI
+            Engineer roles.
           </p>
 
-          {/* Quick stat pills */}
+          {/* Quick fact pills */}
           <div className="flex flex-wrap gap-3 mt-2">
             {[
-              { label: "5+ Apps Shipped", icon: "🚀" },
-              { label: "100+ Active Users", icon: "👥" },
-              { label: "99.2% Uptime", icon: "⚡" },
-              { label: "AI Integration", icon: "🤖" },
+              { label: "Pune, India", icon: "📍" },
+              { label: "Batch of 2027", icon: "🎓" },
+              { label: "Claude & Gemini APIs", icon: "🤖" },
+              { label: "Open to SDE / Full Stack / AI Engineer roles", icon: "💼" },
             ].map(({ label, icon }) => (
               <span
                 key={label}
@@ -178,14 +185,30 @@ const AboutMe = () => {
             ))}
           </div>
 
-          {/* Email */}
-          <a
-            href="mailto:malganrushikesh02@gmail.com"
-            className="text-[14px] mt-1 hover:underline transition-opacity hover:opacity-80"
-            style={{ color: "var(--accent-primary)" }}
-          >
-            ✉ malganrushikesh02@gmail.com
-          </a>
+          {/* Email + resume (resume button only renders once profile.resumeUrl is set) */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-1">
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-[14px] hover:underline transition-opacity hover:opacity-80"
+              style={{ color: "var(--accent-primary)" }}
+            >
+              ✉ {profile.email}
+            </a>
+            {profile.resumeUrl && (
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[14px] font-semibold px-4 py-1.5 rounded-full transition-transform hover:scale-105"
+                style={{
+                  background: "var(--accent-primary)",
+                  color: "var(--bg-primary)",
+                }}
+              >
+                Resume ↗
+              </a>
+            )}
+          </div>
         </motion.div>
       </div>
     </>

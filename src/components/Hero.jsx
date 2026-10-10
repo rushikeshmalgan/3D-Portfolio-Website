@@ -5,7 +5,9 @@ import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto">
+    // The hero artwork is always dark, so it always uses the dark token set,
+    // even when the rest of the page is in light mode.
+    <section data-theme="dark" className="relative w-full h-screen mx-auto">
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -36,10 +38,11 @@ const Hero = () => {
             className={`${styles.heroSubText} mt-2`}
             style={{ color: "var(--text-muted)" }}
           >
-            Full Stack Developer &amp; Backend Engineer
+            Full-stack developer building LLM-powered products
             <br className="sm:block hidden" />
-            <span style={{ color: "var(--accent-secondary)" }}>
-              {" "}React Native · Node.js · AI Integration
+            {/* Stack line is hidden on phones: a third wrapped line runs into the 3D monitor. */}
+            <span className="hidden sm:inline" style={{ color: "var(--accent-secondary)" }}>
+              {" "}React · Next.js · Node.js · Claude &amp; Gemini APIs
             </span>
           </p>
         </div>

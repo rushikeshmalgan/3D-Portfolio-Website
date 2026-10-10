@@ -8,6 +8,13 @@ export default [
     ignores: ['dist'],
   },
   {
+    // Tooling configs run in Node (CommonJS `module.exports`), not the browser.
+    files: ['*.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
+  {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,

@@ -56,12 +56,11 @@ const About = () => {
         className="mt-4 text-[17px] max-w-3xl leading-[30px]"
         style={{ color: "var(--text-muted)" }}
       >
-        I'm a Full Stack & Backend Engineer specialising in the MERN stack,
-        React Native, and AI integration. I build production-grade mobile and
-        web apps end-to-end — from scalable Node.js APIs and Firebase backends
-        to polished React UIs with smooth animations and real-world performance.
-        I also led the development of Sattava, a health-tech platform serving
-        100+ active users.
+        I build web and mobile products end to end, with a focus on features
+        powered by LLM APIs such as Claude and Gemini: structured extraction,
+        tool-using agents and retrieval. The day-to-day stack is React, Next.js,
+        React Native and Node.js, with PostgreSQL, MongoDB or Firebase
+        underneath.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">

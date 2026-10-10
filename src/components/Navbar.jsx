@@ -22,6 +22,8 @@ const Navbar = () => {
 
   return (
     <nav
+      // Transparent over the always-dark hero, so use dark tokens until scrolled.
+      data-theme={scrolled ? undefined : "dark"}
       style={{ background: scrolled ? "var(--nav-bg)" : "transparent" }}
       className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 backdrop-blur-sm transition-all duration-300`}
     >
@@ -35,7 +37,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <img src={logo} alt="" className="w-9 h-9 object-contain" />
           <p
             className="text-[18px] font-bold cursor-pointer flex"
             style={{ color: "var(--accent-primary)" }}
@@ -97,13 +99,19 @@ const Navbar = () => {
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
 
-          <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
-            style={{ filter: "var(--text-primary)" }}
+          <button
+            type="button"
+            aria-label={toggle ? "Close menu" : "Open menu"}
+            aria-expanded={toggle}
             onClick={() => setToggle(!toggle)}
-          />
+          >
+            <img
+              src={toggle ? close : menu}
+              alt=""
+              className="w-[28px] h-[28px] object-contain cursor-pointer"
+              style={{ filter: "var(--text-primary)" }}
+            />
+          </button>
 
           <div
             className={`${

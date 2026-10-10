@@ -5,7 +5,6 @@ import {
   About,
   Contact,
   Experience,
-  Feedbacks,
   Hero,
   Navbar,
   Tech,
@@ -41,16 +40,16 @@ const App = () => {
             3. Work Experience (timeline)
             4. Tech Skills (3D balls)
             5. Projects (project cards)
-            6. Testimonials
-            7. Achievements + Education
-            8. Contact + Stars
+            6. Achievements + Education
+            7. Contact + Stars
+            (Testimonials are hidden until real quotes exist: add <Feedbacks />
+            back here and fill `testimonials` in constants/index.js.)
         */}
         <AboutMe />
         <About />
         <Experience />
         <Tech />
         <Works />
-        <Feedbacks />
         <Achievements />
 
         <div className="relative z-0">

@@ -30,11 +30,21 @@ const ExperienceCard = ({ experience }) => {
       }}
       icon={
         <div className="flex justify-center items-center w-full h-full">
-          <img
-            src={experience.icon}
-            alt={experience.company_name}
-            className="w-[60%] h-[60%] object-contain"
-          />
+          {experience.icon ? (
+            <img
+              src={experience.icon}
+              alt={experience.company_name}
+              className="w-[60%] h-[60%] object-contain"
+            />
+          ) : (
+            <span
+              aria-hidden="true"
+              className="text-[16px] font-black"
+              style={{ color: "var(--color-cream)" }}
+            >
+              {experience.iconText}
+            </span>
+          )}
         </div>
       }
     >
@@ -53,17 +63,19 @@ const ExperienceCard = ({ experience }) => {
         </p>
       </div>
 
-      <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className="text-[14px] pl-1 tracking-wider"
-            style={{ color: "var(--text-muted)" }}
-          >
-            {point}
-          </li>
-        ))}
-      </ul>
+      {experience.points.length > 0 && (
+        <ul className="mt-5 list-disc ml-5 space-y-2">
+          {experience.points.map((point, index) => (
+            <li
+              key={`experience-point-${index}`}
+              className="text-[14px] pl-1 tracking-wider"
+              style={{ color: "var(--text-muted)" }}
+            >
+              {point}
+            </li>
+          ))}
+        </ul>
+      )}
     </VerticalTimelineElement>
   );
 };

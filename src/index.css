@@ -37,9 +37,11 @@
   --bg-card:         #ffffff;
   --text-primary:    #1F6363;     /* dark-teal text */
   --text-secondary:  #1F6363;
-  --text-muted:      #2F9C95;
-  --accent-primary:  #D9CB92;     /* gold */
-  --accent-secondary:#2F9C95;     /* teal */
+  /* Light-mode accents are darkened from the brand gold/teal so text meets
+     WCAG AA (4.5:1) on the cream and white surfaces. Dark mode is unchanged. */
+  --text-muted:      #256F6A;
+  --accent-primary:  #6F6019;     /* deep gold */
+  --accent-secondary:#1B726C;     /* deep teal */
   --nav-bg:          rgba(245,243,192,0.9);
   --border-glow:     rgba(217,203,146,0.8);
 }
@@ -134,6 +136,27 @@ html, body {
   background: -webkit-linear-gradient(to top, #c9b67a, #D9CB92);
   background: linear-gradient(to top, #c9b67a, #D9CB92);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Light mode: the gradients above fade to pale gold/cream, which disappears on
+   white cards. Use deeper stops (all >= 4.5:1 on white) for project tags. */
+[data-theme="light"] .green-text-gradient {
+  background: linear-gradient(to top, #1B726C, #6F6019);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .gold-text-gradient {
+  background: linear-gradient(to top, #6F6019, #7A6A1E);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .pink-text-gradient {
+  background: linear-gradient(to top, #6F6019, #256F6A);
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

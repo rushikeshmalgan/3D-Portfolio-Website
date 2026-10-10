@@ -7,7 +7,7 @@ import { fadeIn, textVariant } from "../utils/motion";
 import { achievements, education } from "../constants";
 
 // ─── Achievement Badge Card ───────────────────────────────────────────────────
-const BadgeCard = ({ title, subtitle, icon, color, index }) => (
+const BadgeCard = ({ title, subtitle, icon, index }) => (
   <motion.div
     variants={fadeIn("up", "spring", index * 0.15, 0.7)}
     className="badge-card flex-1 min-w-[220px]"
@@ -25,7 +25,7 @@ const BadgeCard = ({ title, subtitle, icon, color, index }) => (
 );
 
 // ─── Education Card ───────────────────────────────────────────────────────────
-const EducationCard = ({ degree, institution, date, cgpa, icon, index }) => (
+const EducationCard = ({ degree, institution, date, icon, index }) => (
   <motion.div
     variants={fadeIn("up", "spring", index * 0.2, 0.75)}
     className="p-6 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-5 mt-6"
@@ -51,16 +51,6 @@ const EducationCard = ({ degree, institution, date, cgpa, icon, index }) => (
       <div className="flex flex-wrap gap-4 mt-2">
         <span className="text-[13px]" style={{ color: "var(--text-muted)" }}>
           📅 {date}
-        </span>
-        <span
-          className="text-[13px] font-semibold px-2 py-0.5 rounded-md"
-          style={{
-            background: "rgba(217,203,146,0.15)",
-            color: "var(--accent-primary)",
-            border: "1px solid rgba(217,203,146,0.35)",
-          }}
-        >
-          CGPA {cgpa}
         </span>
       </div>
     </div>
