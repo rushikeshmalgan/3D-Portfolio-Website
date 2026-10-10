@@ -109,11 +109,11 @@ const toTags = (...names) =>
 const projects = [
   {
     name: "Codentry",
-    pitch: "GitHub App that reviews pull requests automatically. My final-year project.",
+    pitch: "GitHub App that reviews pull requests. My final-year project.",
     highlights: [
-      "Differential ESLint and Semgrep analysis on every pull request.",
-      "Webhook pipeline with HMAC-SHA256 verification and replay protection.",
-      "90+ backend tests; Claude-based AI review is planned on top of the static analysis.",
+      "Differential ESLint and Semgrep analysis on every PR.",
+      "HMAC-SHA256 webhook verification with replay protection.",
+      "90+ backend tests. Claude-based AI review is planned.",
     ],
     tags: toTags("Next.js", "TypeScript", "FastAPI", "PostgreSQL"),
     image: null, // TODO: add a screenshot or demo image
@@ -123,11 +123,11 @@ const projects = [
   },
   {
     name: "Unpack",
-    pitch: "Paste an Instagram reel link, get the verified links it points to: tools, repos, books, places.",
+    pitch: "Turns an Instagram reel link into the verified links it mentions.",
     highlights: [
-      "Gemini extracts what the reel mentions; resolvers search GitHub, npm, Open Library, arXiv, OpenStreetMap and more.",
-      "Only returns URLs found through retrieval, then checks each one is live, so there are no model-invented links.",
-      "Nothing submitted is stored (no accounts, no database); rate-limited per IP; 300+ tests.",
+      "Gemini extracts the mentions; resolvers find the real links.",
+      "Returns only retrieved URLs, each checked live. No invented links.",
+      "No accounts or database. Rate-limited; 300+ tests.",
     ],
     tags: toTags("Next.js", "TypeScript", "Gemini API", "Upstash Redis"),
     image: null, // TODO: add a screenshot
@@ -136,23 +136,24 @@ const projects = [
   },
   {
     name: "GDG ViMEET Website",
-    pitch: "Official website of the Google Developer Groups on Campus chapter at ViMEET.",
+    pitch: "Official site of GDG On Campus ViMEET, 2026–27.",
+    // TODO: add an impact bullet (features you built, events or members it supports).
     highlights: [
-      "Separate frontend and backend codebases with a database layer, set up for Vercel deployment.",
-      // TODO: add an impact bullet (events or members it supports, features you built). The repo README is empty.
+      "Home for the chapter's workshops, hackathons and study jams.",
+      "Separate frontend, backend and database layers; deployed on Vercel.",
     ],
     tags: toTags("JavaScript", "Vercel"), // TODO: add the real stack (frontend framework, backend, database)
     image: null, // TODO: add a screenshot
-    source_code_link: "https://github.com/rushikeshmalgan/GDG", // TODO: confirm "GDG" is the ViMEET site repo
-    live_link: null, // TODO: add the live site URL
+    source_code_link: "https://github.com/rushikeshmalgan/GDG",
+    live_link: "https://gdg-vimeet.vercel.app/",
   },
   {
     name: "BroCode",
-    pitch: "Terminal-based AI coding assistant that reads, edits and searches your codebase through Claude.",
+    pitch: "Terminal AI coding assistant powered by Claude.",
     highlights: [
-      "Six built-in tools (read, write, edit, bash, glob, grep) with y/n approval before any write or shell command.",
-      "Agent loop chains up to 10 tool calls per turn, with streaming responses in the terminal UI.",
-      "Persists sessions and feeds the model your CLAUDE.md and current git status each turn.",
+      "Reads, writes and edits files, runs shell commands, searches code.",
+      "Asks y/n before any write or shell command.",
+      "Agent loop of up to 10 tool calls per turn; sessions persist.",
     ],
     tags: toTags("Bun", "React 19", "TypeScript", "Claude API"),
     image: null, // TODO: add a terminal screenshot or GIF
@@ -161,12 +162,12 @@ const projects = [
   },
   {
     name: "Golazo",
-    pitch: "Football app for Indian fans: community, tactics education and a tactical board.",
-    // TODO: replace these three with specifics (what users can do, what you built).
+    pitch: "Football app for Indian fans.",
+    // TODO: replace these with specifics (what users can do, what you built).
     highlights: [
-      "Community space for football fans in India.",
-      "Tactics education, so fans can learn how teams set up and play.",
-      "Built-in tactical board.",
+      "Community for Indian football fans.",
+      "Tactics education.",
+      "Tactical board.",
     ],
     tags: [], // TODO: add the tech stack
     image: null, // TODO: add a screenshot
@@ -175,14 +176,12 @@ const projects = [
   },
   {
     name: "Sattava",
-    pitch: "Mobile app that logs Indian meals from a photo and scores your diet.",
+    pitch: "Logs Indian meals from a photo and scores your diet.",
     highlights: [
-      "Gemini Vision identifies up to 5 dishes per photo and estimates calories and macros.",
-      "Built around Indian food: offline search, barcode lookup and a 0–100 diet score benchmarked against ICMR values.",
-      "Firebase Auth (email, Google, phone) with token verification on an Express and MongoDB backend.",
+      "Gemini Vision detects up to 5 dishes per photo and estimates macros.",
+      "Offline Indian food search, barcode lookup, 0–100 diet score (ICMR-based).",
+      "Firebase Auth with token verification on an Express + MongoDB API.",
     ],
-    // TODO: your brief mentions a Python AI microservice, but the repo README says it was archived
-    // in favour of the TypeScript backend. Add "Python" back here only if it is still part of the app.
     tags: toTags("Expo", "Firebase Auth", "Node.js", "Gemini API"),
     image: null, // TODO: add app screenshots
     source_code_link: "https://github.com/rushikeshmalgan/Sattava",
@@ -190,11 +189,11 @@ const projects = [
   },
   {
     name: "Morya Bappa Mode",
-    pitch: "Location-based game for Ganesh Chaturthi: find Ganpati pandals by actually going to them.",
+    pitch: "Ganesh Chaturthi game: discover pandals by visiting them.",
     highlights: [
-      "Pandals stay hidden until a server-verified GPS check-in reveals them.",
-      "Interactive map with walking directions, daily quests, streaks, squads and leaderboards.",
-      "Community pandal submissions with an admin moderation dashboard; no sign-up needed.",
+      "Pandals stay hidden until a server-verified GPS check-in.",
+      "Map with directions, daily quests, streaks, squads, leaderboards.",
+      "Community submissions with admin moderation. No sign-up.",
     ],
     tags: toTags("Next.js", "TypeScript", "Prisma", "PostgreSQL"),
     image: null, // TODO: add a screenshot
@@ -202,6 +201,7 @@ const projects = [
     live_link: null, // TODO: the repo README lists bappa-morya-bappa.vercel.app but it returned DEPLOYMENT_NOT_FOUND on 2026-10-10. Redeploy, then add the URL.
   },
 ];
+
 
 // ─── Achievements / Leadership ─────────────────────────────────────────────────
 const achievements = [

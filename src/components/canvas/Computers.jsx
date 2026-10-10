@@ -3,36 +3,23 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
-import { useTheme } from "../../context/ThemeContext";
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
-  const { theme } = useTheme();
-
-  // Theme-aware lighting values
-  const hemisphereGroundColor = theme === "dark" ? "#1F6363" : "#D9CB92";
-  const spotLightColor        = theme === "dark" ? "#2F9C95" : "#D9CB92";
-  const pointLightColor       = theme === "dark" ? "#2F9C95" : "#F5F3C0";
 
   return (
     <mesh>
-      <hemisphereLight
-        intensity={theme === "dark" ? 0.15 : 0.3}
-        groundColor={hemisphereGroundColor}
-      />
+      <hemisphereLight intensity={0.15} groundColor="#1F6363" />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
         penumbra={1}
-        intensity={theme === "dark" ? 1 : 0.8}
-        color={spotLightColor}
+        intensity={1}
+        color="#2F9C95"
         castShadow
         shadow-mapSize={1024}
       />
-      <pointLight
-        intensity={theme === "dark" ? 1 : 0.6}
-        color={pointLightColor}
-      />
+      <pointLight intensity={1} color="#2F9C95" />
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.7 : 0.75}

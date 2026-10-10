@@ -3,17 +3,12 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
 
-import { useTheme } from "../../context/ThemeContext";
-
 const Stars = (props) => {
   const ref = useRef();
-  const { theme } = useTheme();
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
+    // Length must be a multiple of 3 (x, y, z per star), or the last point is NaN.
+    random.inSphere(new Float32Array(5001), { radius: 1.2 })
   );
-
-  // Dark mode: teal stars; Light mode: gold stars
-  const starColor = theme === "dark" ? "#2F9C95" : "#D9CB92";
 
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10;
@@ -25,7 +20,7 @@ const Stars = (props) => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color={starColor}
+          color="#2F9C95"
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}

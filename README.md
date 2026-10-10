@@ -12,7 +12,9 @@ Personal portfolio of Rushikesh Malgan: a freelance full-stack developer in Pune
 - **Tech stack** as interactive 3D balls
 - **Projects**: Codentry, Unpack, GDG ViMEET website, BroCode, Golazo, Sattava, Morya Bappa Mode
 - **Achievements & Education**
-- **Contact** form (EmailJS) with a 3D Earth, plus a light/dark theme toggle
+- **Contact** form (EmailJS) with a 3D Earth
+
+The site is dark-only.
 
 ## Tech stack
 
@@ -63,11 +65,10 @@ A few strings are written directly in components: the hero tagline in `Hero.jsx`
 src/
   components/      Section components; canvas/ holds the three.js scenes
   constants/       Content data (see above)
-  context/         Light/dark theme
   hoc/             SectionWrapper (scroll-in animation + anchor ids)
   utils/motion.js  Framer Motion variants
   assets/          Images and tech icons
-public/            3D models (desktop_pc, planet), logo, profile photo
+public/            3D models (desktop_pc, planet), logo, profile photo (pp.webp)
 ```
 
 ## Deployment

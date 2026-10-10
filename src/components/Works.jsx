@@ -168,9 +168,7 @@ const Works = () => {
           className="mt-3 text-[17px] max-w-3xl leading-[30px]"
           style={{ color: "var(--text-muted)" }}
         >
-          Seven projects, from an AI code-review GitHub App and a terminal
-          coding assistant to a food-logging app and a Ganesh Chaturthi
-          exploration game.
+          Seven projects across LLM tooling, mobile and community apps.
         </motion.p>
       </div>
 

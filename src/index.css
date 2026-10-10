@@ -9,15 +9,13 @@
    DESIGN TOKEN CSS VARIABLES — Gold / Teal Palette
    ═══════════════════════════════════════════════════════════════════ */
 :root {
+  color-scheme: dark;             /* the portfolio is dark-only */
+
   --color-gold:      #D9CB92;
   --color-cream:     #F5F3C0;
   --color-teal:      #2F9C95;
   --color-dark-teal: #1F6363;
-}
 
-/* Dark mode token set (default — portfolio is dark-first) */
-[data-theme="dark"],
-:root {
   --bg-primary:      #050816;
   --bg-secondary:    #1F6363;
   --bg-card:         #151030;
@@ -28,22 +26,6 @@
   --accent-secondary:#2F9C95;     /* teal */
   --nav-bg:          rgba(5,8,22,0.85);
   --border-glow:     rgba(47,156,149,0.6);
-}
-
-/* Light mode token set */
-[data-theme="light"] {
-  --bg-primary:      #F5F3C0;     /* cream bg */
-  --bg-secondary:    #e8e6b0;
-  --bg-card:         #ffffff;
-  --text-primary:    #1F6363;     /* dark-teal text */
-  --text-secondary:  #1F6363;
-  /* Light-mode accents are darkened from the brand gold/teal so text meets
-     WCAG AA (4.5:1) on the cream and white surfaces. Dark mode is unchanged. */
-  --text-muted:      #256F6A;
-  --accent-primary:  #6F6019;     /* deep gold */
-  --accent-secondary:#1B726C;     /* deep teal */
-  --nav-bg:          rgba(245,243,192,0.9);
-  --border-glow:     rgba(217,203,146,0.8);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -139,27 +121,6 @@ html, body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Light mode: the gradients above fade to pale gold/cream, which disappears on
-   white cards. Use deeper stops (all >= 4.5:1 on white) for project tags. */
-[data-theme="light"] .green-text-gradient {
-  background: linear-gradient(to top, #1B726C, #6F6019);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-[data-theme="light"] .gold-text-gradient {
-  background: linear-gradient(to top, #6F6019, #7A6A1E);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-[data-theme="light"] .pink-text-gradient {
-  background: linear-gradient(to top, #6F6019, #256F6A);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* ═══════════════════════════════════════════════════════════════════
    CANVAS LOADER SPINNER
    ═══════════════════════════════════════════════════════════════════ */
@@ -249,30 +210,6 @@ html, body {
       -1.8em 1.8em 0 0em rgba(217,203,146,0.5),
       -2.6em 0em 0 0em rgba(217,203,146,0.7), -1.8em -1.8em 0 0em #D9CB92;
   }
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   THEME TOGGLE BUTTON
-   ═══════════════════════════════════════════════════════════════════ */
-.theme-toggle {
-  background: none;
-  border: 1.5px solid var(--accent-primary);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--accent-primary);
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  font-size: 1rem;
-}
-.theme-toggle:hover {
-  background: var(--accent-primary);
-  color: var(--bg-primary);
-  transform: rotate(20deg) scale(1.1);
-  box-shadow: 0 0 12px var(--accent-primary);
 }
 
 /* ═══════════════════════════════════════════════════════════════════

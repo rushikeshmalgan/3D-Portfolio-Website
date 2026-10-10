@@ -64,7 +64,7 @@ const AboutMe = () => {
               }}
             />
             <img
-              src="/pp.png"
+              src="/pp.webp"
               alt="Portrait of Rushikesh Malgan"
               width={220}
               height={220}

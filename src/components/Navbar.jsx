@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
-import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,8 +20,6 @@ const Navbar = () => {
 
   return (
     <nav
-      // Transparent over the always-dark hero, so use dark tokens until scrolled.
-      data-theme={scrolled ? undefined : "dark"}
       style={{ background: scrolled ? "var(--nav-bg)" : "transparent" }}
       className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 backdrop-blur-sm transition-all duration-300`}
     >
@@ -49,7 +45,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        {/* Desktop nav links + theme toggle */}
+        {/* Desktop nav links */}
         <div className="hidden sm:flex items-center gap-8">
           <ul className="list-none flex flex-row gap-8">
             {navLinks.map((nav) => (
@@ -75,30 +71,10 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-
-          {/* Sun / Moon toggle */}
-          <button
-            id="theme-toggle-btn"
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle light/dark mode"
-            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {theme === "dark" ? "☀️" : "🌙"}
-          </button>
         </div>
 
         {/* Mobile menu */}
         <div className="sm:hidden flex flex-1 justify-end items-center gap-3">
-          {/* Mobile theme toggle */}
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? "☀️" : "🌙"}
-          </button>
-
           <button
             type="button"
             aria-label={toggle ? "Close menu" : "Open menu"}
